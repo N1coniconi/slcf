@@ -1,31 +1,18 @@
 package com.huhao.springboot;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-@EnableJpaRepositories(basePackages={"com.**.dao"})
-@SpringBootApplication
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+@EnableTransactionManagement
 @ServletComponentScan
-@ComponentScan(value={"com.*"})
-@EntityScan("com.**.pojo")  
-public class Application extends SpringBootServletInitializer{
-	
-	
-	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		// TODO Auto-generated method stub
-		return builder.sources(Application.class);
-	}
-
+@MapperScan("com.huhao.springboot.*.dao")
+@SpringBootApplication
+public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+		System.out.println("ヾ(◍°∇°◍)ﾉﾞ    贪玩蓝月启动成功      ヾ(◍°∇°◍)ﾉﾞ\n");
 	}
-
 }
